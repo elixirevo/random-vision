@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Number Visualizer - /dev/random</title>
+  <meta name="description" content="실시간 /dev/random 난수 패턴 시각화">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Random Visualizer</h1>
+      <p class="subtitle">/dev/random 난수 패턴 실시간 시각화</p>
+    </header>
+
+    <div class="main-content">
+      <div class="visualization-panel">
+        <div class="canvas-container">
+          <canvas id="visualizationCanvas"></canvas>
+        </div>
+        
+        <div class="status-indicator">
+          <div class="status-dot"></div>
+          <span class="status-text">실시간 데이터 수신 중</span>
+        </div>
+      </div>
+
+      <aside class="controls-panel">
+        <div class="control-group">
+          <h3>시각화 모드</h3>
+          <div class="mode-buttons">
+            <button class="mode-btn active" data-mode="bits">
+              비트 패턴
+            </button>
+            <button class="mode-btn" data-mode="distribution">
+              분포 히스토그램
+            </button>
+            <button class="mode-btn" data-mode="scatter">
+              2D 산점도
+            </button>
+            <button class="mode-btn" data-mode="color">
+              컬러 그리드
+            </button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <h3>통계</h3>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-label">평균값</div>
+              <div class="stat-value" id="statMean">0.00</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">표준편차</div>
+              <div class="stat-value" id="statStdDev">0.00</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">샘플 수</div>
+              <div class="stat-value" id="statSamples">0</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">엔트로피</div>
+              <div class="stat-value" id="statEntropy">0.00</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
