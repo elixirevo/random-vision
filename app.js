@@ -37,7 +37,7 @@ function resizeCanvas() {
 
 async function fetchRandomData() {
   try {
-    const response = await fetch('http://localhost:3000/api/random?count=2048');
+    const response = await fetch('http://192.168.0.27:3000/api/random?count=2048');
     const data = await response.json();
     randomData = data.bytes;
     
