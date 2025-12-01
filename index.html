@@ -31,6 +31,21 @@
 
       <aside class="controls-panel">
         <div class="control-group">
+          <h3>난수 생성기</h3>
+          <div class="mode-buttons">
+            <button class="source-btn active" data-source="lcg">
+              LCG (패턴 有)
+            </button>
+            <button class="source-btn" data-source="math">
+              Math.random
+            </button>
+            <button class="source-btn" data-source="urandom">
+              /dev/urandom
+            </button>
+          </div>
+        </div>
+        
+        <div class="control-group">
           <h3>시각화 모드</h3>
           <div class="mode-buttons">
             <button class="mode-btn active" data-mode="bits">

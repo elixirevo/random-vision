@@ -1,10 +1,11 @@
 // Application state
 let currentMode = 'bits';
+let currentSource = 'lcg'; // Default to LCG for visible patterns
 let animationId = null;
 let randomData = [];
 let accumulatedData = []; // Store accumulated data for better pattern analysis
 let canvas, ctx;
-const MAX_ACCUMULATED_SAMPLES = 10000; // Maximum samples to keep
+const MAX_ACCUMULATED_SAMPLES = 100000; // Increased for better pattern analysis
 
 // Initialize application
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,6 +26,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   
+  // Setup source buttons
+  const sourceButtons = document.querySelectorAll('.source-btn');
+  sourceButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      sourceButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentSource = btn.dataset.source;
+      // Reset accumulated data when changing source
+      accumulatedData = [];
+    });
+  });
+  
   // Start fetching and visualizing data
   startVisualization();
 });
@@ -37,7 +50,7 @@ function resizeCanvas() {
 
 async function fetchRandomData() {
   try {
-    const response = await fetch('http://192.168.0.27:3000/api/random?count=2048');
+    const response = await fetch(`http://192.168.0.27:3000/api/random?count=5000&source=${currentSource}`);
     const data = await response.json();
     randomData = data.bytes;
     
