@@ -40,7 +40,7 @@ app.get('/api/random', (req, res) => {
     let randomBytes;
     
     switch (source) {
-      case 'urandom':
+      case 'qrandom':
         // Read from /dev/urandom (cryptographically secure)
         const buffer = Buffer.alloc(bytesToRead);
         const fd = fs.openSync('/dev/qrandom', 'r');
@@ -66,7 +66,7 @@ app.get('/api/random', (req, res) => {
         break;
         
       default:
-        throw new Error('Invalid source. Use: urandom, lcg, or math');
+        throw new Error('Invalid source. Use: qrandom, lcg, or math');
     }
     
     res.json({
